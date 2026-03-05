@@ -1,0 +1,281 @@
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="Site.Mobile.master.vb" Inherits="sunday_school_ms.Site_Mobile" %>
+
+<%@ Register Src="~/ViewSwitcher.ascx" TagPrefix="friendlyUrls" TagName="ViewSwitcher" %>
+
+<%--<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <h1>Mobile Master Page</h1>
+        <asp:ContentPlaceHolder runat="server" ID="FeaturedContent" />
+        <section class="content-wrapper main-content clear-fix">
+            <asp:ContentPlaceHolder runat="server" ID="MainContent" />
+        </section>
+        <friendlyUrls:ViewSwitcher ID="ViewSwitcher1" runat="server" />
+    </div>
+    </form>
+</body>
+</html>--%>
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%: Page.Title %> - BEM Kuching Sunday School Database System</title>
+
+    <!-- Custom Styles -->
+    
+    <link runat="server" href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link runat="server" href="~/Content/site.css" rel="stylesheet" />
+    <link runat="server" href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link runat="server" rel="stylesheet" href="~/CSS/style-login.css" />
+    <link runat="server" rel="stylesheet" href="~/CSS/style.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Huninn&display=swap" rel="stylesheet">
+
+<%--    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>--%>
+
+    <!-- Modernizr (ONLY if you specifically need it) -->
+    <script src="<%= ResolveUrl("~/Scripts/modernizr-2.8.3.js") %>"></script>
+
+    <style>
+        #simpleAlert, #simpleConfirmAlert {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.4);
+            z-index: 10000;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        #simpleAlert.show, #simpleConfirmAlert.show {
+            display: block;
+            opacity: 1;
+        }
+        
+        #simpleAlertMessage, #simpleConfirmAlertMessage{
+            margin-bottom: 20px;
+            font-size: 20px;
+            color: #333;
+        }
+        .div-alert-box{
+            display: inline-block;
+            background-color: #fff;
+            padding: 25px 35px;
+            margin-top: 15%;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            max-width: 400px;
+            width: 80%;
+        }
+        .alert-yes{
+            padding: 10px 20px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .alert-yes:hover {
+            background-color: #8bc2fc;
+            color: #333;
+        }
+        .alert-no{
+            padding: 10px 20px;
+            font-size: 18px;
+            color: #333;
+            background-color: transparent;
+            border: 2px solid #007bff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+            .alert-no:hover {
+                background-color: #007bff;
+                color: #fff;
+            }
+    </style>
+    <asp:ContentPlaceHolder ID="head" runat="server" ></asp:ContentPlaceHolder>
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <form runat="server">
+
+            <!-- ScriptManager (kept minimal for UpdatePanel support) -->
+            <asp:ScriptManager runat="server"></asp:ScriptManager>
+
+            <!-- Header -->
+            <header id="main-header">
+                <div class="header-left">
+                    <a href="#" class="logo-style">
+                        <img src="../Images/logo.png" /></a>
+                    <h2>古晋真道堂儿童主日学</h2>
+                </div>
+                <div class="header-right">
+                    <ul class="navlist">
+                        <li>Hi,&nbsp;<asp:Label ID="UserName" runat="server"></asp:Label>
+                            &nbsp;<asp:Label ID="UserRole" runat="server"></asp:Label></li>
+                        <li><span id="LiveClock" class="timestamp-font-size"></span></li>
+                    </ul>
+                    <asp:Button ID="BtnLogout" runat="server" CssClass="btn-logout"
+                        Text="登出" OnClick="BtnLogout_Click" />
+                </div>
+            </header>
+
+            <!-- Main content -->
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" Visible="true" />
+
+            <!-- Footer -->
+            <footer>
+                <p>Sunday School Database Management System &copy; <%: DateTime.Now.Year %> BEM The Way Kuching</p>
+            </footer>
+
+        </form>
+    </div>
+    <!-- Simple Alert Box -->
+    <div id="simpleAlert" clientidmode="Static">
+        <div class="div-alert-box">
+            <p id="simpleAlertMessage" clientidmode="Static"></p>
+            <button type="button" onclick="closeAlert()" class="alert-yes">确定</button>
+        </div>
+    </div>
+
+    <!-- Confirmation Box -->
+    <div id="simpleConfirmAlert" clientidmode="Static">
+
+        <div class="div-alert-box">
+            <p id="simpleConfirmAlertMessage" clientidmode="Static"></p>
+            <div class="alert-buttons">
+            <button type="button" onclick="closeLogoutAlert()" class="alert-yes">是</button>
+            <button type="button" onclick="closeLogoutAlert()" class="alert-no">否</button>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap 5 JS (bundle includes Popper) -->
+    <script src="<%= ResolveUrl("~/Scripts/bootstrap.bundle.min.js") %>"></script>
+
+    <script src="<%= ResolveUrl("~/Scripts/navigation.js") %>"></script>
+    <script src="<%= ResolveUrl("~/Scripts/live-clock.js") %>"></script>
+
+    <script type="text/javascript">
+
+        // ======== 1. Custom logout confirmation box ========
+        function logoutAlert(message, callback) {
+            var alertBox = document.getElementById('simpleConfirmAlert');
+            var alertMsg = document.getElementById('simpleConfirmAlertMessage');
+
+            if (!alertBox || !alertMsg) {
+                console.error("Alert elements not found!");
+                return;
+            }
+
+            alertMsg.innerText = message;
+            alertBox.style.display = 'block';
+            setTimeout(function () { alertBox.classList.add('show'); }, 50);
+
+            // Get both buttons
+            var yesBtn = alertBox.querySelector('.alert-yes');
+            var noBtn = alertBox.querySelector('.alert-no');
+
+            yesBtn.onclick = function () {
+                closeLogoutAlert();
+                if (callback) callback();   // <-- only YES triggers logout
+            };
+
+            noBtn.onclick = function () {
+                closeLogoutAlert();               // <-- NO simply closes
+            };
+
+        }
+
+        function closeLogoutAlert() {
+            var alertBox = document.getElementById('simpleConfirmAlert');
+            if (!alertBox) return;
+            alertBox.classList.remove('show');
+            setTimeout(function () { alertBox.style.display = 'none'; }, 300);
+        }
+
+        // Attach logout click after page loads
+        window.addEventListener('DOMContentLoaded', function () {
+            var logoutBtn = document.getElementById('<%= BtnLogout.ClientID %>');
+            if (!logoutBtn) {
+                console.error("Logout button not found!");
+                return;
+            }
+
+            logoutBtn.addEventListener('click', function (e) {
+                e.preventDefault(); // stop immediate postback
+                logoutAlert('确定要登出吗?', function () {
+                    // Trigger server-side logout
+                    if (typeof __doPostBack === "function") {
+                        __doPostBack('<%= BtnLogout.UniqueID %>', '');
+                    } else {
+                        document.forms[0].submit(); // fallback
+                    }
+                });
+            });
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+        // ======== 2. Custom alert box ========
+        function showAlert(message, callback) {
+            var alertBox = document.getElementById('simpleAlert');
+            var alertMsg = document.getElementById('simpleAlertMessage');
+
+            if (!alertBox || !alertMsg) {
+                console.error("Alert elements not found!");
+                return;
+            }
+
+            alertMsg.innerText = message;
+            alertBox.style.display = 'block';
+            setTimeout(function () { alertBox.classList.add('show'); }, 50);
+
+            // Override the close button
+            var btn = alertBox.querySelector('button');
+            btn.onclick = function () {
+                closeAlert();
+                if (callback) callback();
+            };
+        }
+
+        function closeAlert() {
+            var alertBox = document.getElementById('simpleAlert');
+            if (!alertBox) return;
+            alertBox.classList.remove('show');
+            setTimeout(function () { alertBox.style.display = 'none'; }, 300);
+        }
+    </script>
+</body>
+</html>
