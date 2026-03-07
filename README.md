@@ -21,13 +21,13 @@ https://bem-sun-sch.runasp.net
 ---
 
 ## Key Technical Highlights
-- Full-stack web application built with ASP.NET Web Forms
-- Secure authentication system with password hashing and salting
-- Login attempt limit to prevent brute-force attacks
-- Role-based access control (Principal / Assigned Teacher / General User)
+- Full-stack web application built with **ASP.NET** Web Forms
+- Secure authentication system with **password hashing and salting**
+- **Login attempt limit** to prevent brute-force attacks
+- **Role-based access control** (Principal / Assigned Teacher / General User)
 - Filterable report generation with **PDF export**
-- Email notification integration using Brevo SMTP
-- Cloud deployment with HTTPS and SSL security
+- Email notification integration using **Brevo SMTP**
+- Cloud deployment with **HTTPS and SSL** security
 - Centralized SQL Server database system
 
 ---
