@@ -24,7 +24,7 @@ https://bem-sun-sch.runasp.net
 - Full-stack web application built with **ASP.NET** Web Forms
 - Secure authentication system with **password hashing and salting**
 - **Login attempt limit** to prevent brute-force attacks
-- **Role-based access control** (Principal / Assigned Teacher / General User)
+- **Role-based access control** (Principal / Admin / General Teacher)
 - Filterable report generation with **PDF export**
 - Email notification integration using **Brevo SMTP**
 - Cloud deployment with **HTTPS and SSL** security
@@ -73,7 +73,7 @@ Main modules include:
 ---
 
 ## System Features
-- Role-based login system (Admin / Teacher)
+- Role-based login system (Principal / Admin / General Teacher)
 - Children attendance recording system
 - Activity and teaching schedule management system
 - Filterable attendance report export to PDF
@@ -103,7 +103,7 @@ The system implements several security mechanisms to protect user accounts and s
 Security features include:
 - Password hashing with salted hash
 - Login attempt limit to prevent brute-force attacks
-- Role-based access control (Admin / Teacher)
+- Role-based access control (Principal / Admin / General Teacher)
 - Secure authentication system
 - HTTPS encrypted communication
 - SSL-secured domain access
