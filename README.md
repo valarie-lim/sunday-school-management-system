@@ -1,17 +1,20 @@
 # Sunday School Management System
 ![Framework](https://img.shields.io/badge/Framework-ASP.NET-blue)
+
 ![Backend](https://img.shields.io/badge/Backend-VB.NET-purple)
 ![Frontend](https://img.shields.io/badge/Frontend-HTML-orange)
 ![Frontend](https://img.shields.io/badge/Frontend-CSS-blue)
 ![Frontend](https://img.shields.io/badge/Frontend-JavaScript-yellow)
+
 ![Database](https://img.shields.io/badge/Database-SQL%20Server-red)
+
 ![Feature](https://img.shields.io/badge/Feature-PDF%20Reporting-green)
 ![Feature](https://img.shields.io/badge/Feature-SMTP%20Email-orange)
 ![Security](https://img.shields.io/badge/Security-HTTPS-success)
 ![Cloud](https://img.shields.io/badge/Cloud-MonsterASP.NET-blue)
 
 A web-based management system developed as a capstone project for the Diploma in Information Technology programme.  
-The system helps Sunday School administrators and teachers manage attendance records, children information, and activity schedules through a centralized database-driven platform.
+The system helps Sunday School principal and teachers manage attendance records, children information, and activity schedules through a centralized database-driven platform.
 
 Live Demo  
 https://bem-sun-sch.runasp.net  
@@ -98,6 +101,8 @@ Main modules include:
 - Children information management
 - Guardian information management
 - Teacher information management
+- Activity information management
+- Teaching Material information management
 - Attendance recording system
 - Activity and teaching schedule management
 - PDF reporting system
@@ -135,7 +140,7 @@ The system implements several security mechanisms to protect user accounts and s
 
 Security features include:
 - Password hashing with salted hash
-- Login attempt limit to prevent brute-force attacks
+- 3 times attempt locked to prevent brute-force attacks
 - Role-based access control (Principal / Admin / General Teacher)
 - Secure authentication system
 - HTTPS encrypted communication
@@ -173,15 +178,20 @@ Responsible for structured data storage and retrieval.
 ## Cloud Deployment
 The system is deployed to a live cloud hosting environment using **MonsterASP.NET**, allowing the application to be accessed through the internet.
 
-Deployment features include:
+Deployment features include:  
 - ASP.NET web application hosting
 - SQL Server database hosting
 - HTTPS routing
 - SSL-secured domain access
 - Live production environment testing
 
-Live system  
+### Live Demo
 https://bem-sun-sch.runasp.net
+
+### Deployment History
+The system was initially deployed on **MyASP.NET** during the development phase for testing and evaluation.
+
+After the project submission, the system interface was further improved and redeployed on **MonsterASP.NET**, providing a more stable hosting environment with HTTPS and SSL support for live system demonstration.
 
 ---
 
